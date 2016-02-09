@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ESTR Eval App</string>
-    <string name="action_settings">Settings</string>
+    <string name="no_connection">Settings</string>
+    <string name="no_connection_detail">Settings</string>
 </resources>
