@@ -1,5 +1,6 @@
 package ca.stevenlyall.estrevalapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,10 +16,9 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
-	WebView webView;
-
 	// url for web app
-	final String URL = "http://stevenlyall.me/evaluate";
+	@SuppressWarnings("FieldCanBeLocal")
+	private final String URL = "http://stevenlyall.me/evaluate";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
 		builder.create().show();
 	}
 
+	@SuppressLint("SetJavaScriptEnabled")
 	private void showAppInWebView() {
-		webView = (WebView) findViewById(R.id.webView);
+		WebView webView = (WebView) findViewById(R.id.webView);
 
 		// enable js for web view
 		WebSettings webSettings = webView.getSettings();
