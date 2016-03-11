@@ -1,4 +1,4 @@
-package ca.stevenlyall.estrevalapp;
+package ca.stevenlyall.evaln;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -15,7 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import ca.stevenlyall.estrevalapp.interfaces.INotifyUpdateAvailableDelegate;
+import ca.stevenlyall.evaln.interfaces.INotifyUpdateAvailableDelegate;
 
 public class MainActivity extends AppCompatActivity {
 

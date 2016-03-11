@@ -1,4 +1,4 @@
-package ca.stevenlyall.estrevalapp;
+package ca.stevenlyall.evaln;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

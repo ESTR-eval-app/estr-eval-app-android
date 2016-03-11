@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "ca.stevenlyall.estrevalapp"
+        applicationId "ca.stevenlyall.evaln"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1

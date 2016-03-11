@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ESTR Eval App</string>
+    <string name="app_name">Eval&#x207f;</string>
     <string name="no_connection">Settings</string>
     <string name="no_connection_detail">Settings</string>
     <string name="update_required_body">This device is running an outdated version of the application. Please update to the latest version before continuing.</string>
