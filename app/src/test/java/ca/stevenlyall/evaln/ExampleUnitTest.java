@@ -1,4 +1,4 @@
-package ca.stevenlyall.estrevalapp;
+package ca.stevenlyall.evaln;
 
 import org.junit.Test;
 

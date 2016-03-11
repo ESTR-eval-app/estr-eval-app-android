@@ -1,4 +1,4 @@
-package ca.stevenlyall.estrevalapp;
+package ca.stevenlyall.evaln;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -8,7 +8,7 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import ca.stevenlyall.estrevalapp.interfaces.INotifyUpdateAvailableDelegate;
+import ca.stevenlyall.evaln.interfaces.INotifyUpdateAvailableDelegate;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
