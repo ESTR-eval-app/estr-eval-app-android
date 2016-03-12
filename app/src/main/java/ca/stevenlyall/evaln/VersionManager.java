@@ -1,9 +1,11 @@
 package ca.stevenlyall.evaln;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -18,6 +20,8 @@ import okhttp3.Response;
  */
 public class VersionManager {
 
+	private static final String EULA_PREFIX = "en_eula_";
+
 	// URL of most current version resource
 	private final String VERSION_CHECK_URL = "http://stevenlyall.ca/app-versioning/eval-n/latest_version.json";
 
@@ -25,6 +29,21 @@ public class VersionManager {
 
 	public VersionManager(Context context) {
 		this.context = context;
+	}
+
+	public String getCurrentEULAKey() {
+		PackageInfo versionInfo = getPackageInfo();
+		// eulaKey changes when version number for app is updated
+		return EULA_PREFIX + versionInfo.versionCode;
+	}
+
+	public boolean isEULAAccepted() {
+		PackageInfo versionInfo = getPackageInfo();
+		// eulaKey changes when version number for app is updated
+		final String eulaKey = EULA_PREFIX + versionInfo.versionCode;
+		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+		return prefs.getBoolean(eulaKey, false);
 	}
 
 	private PackageInfo getPackageInfo() {

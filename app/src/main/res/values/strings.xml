@@ -5,4 +5,7 @@
     <string name="update_required_body">This device is running an outdated version of the application. Please update to the latest version before continuing.</string>
     <string name="update_required_title">Outdated App Version</string>
     <string name="user_agent_string">evaln_tablet_app</string>
+    <string name="license_text">license_rexr</string>
+    <string name="i_decline">I Decline</string>
+    <string name="i_accept">I Accept</string>
 </resources>

@@ -23,20 +23,31 @@ public class MainActivity extends AppCompatActivity {
 	@SuppressWarnings("FieldCanBeLocal")
 	private final String URL = "http://stevenlyall.me/evaluate";
 
+	private VersionManager vm;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		vm = new VersionManager(getApplicationContext());
+
+		if (!vm.isEULAAccepted()) {
+			Intent showEula = new Intent(this, AgreementActivity.class);
+			startActivity(showEula);
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
+		if (!vm.isEULAAccepted()) {
+			finish();
+		}
+
 		if (!isNetworkConnected()) {
 			showNoConnectionMessage();
 		} else {
-			VersionManager vm = new VersionManager(getApplicationContext());
 
 			// to ensure all tablets in a large group use most recent version, checks version code against one provided on server
 			vm.checkForNewVersion(new INotifyUpdateAvailableDelegate() {
