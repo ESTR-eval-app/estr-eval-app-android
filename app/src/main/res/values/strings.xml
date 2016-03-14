@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Eval&#x207f;</string>
-    <string name="no_connection">Settings</string>
-    <string name="no_connection_detail">Settings</string>
+    <string name="no_connection">No Internet Connection</string>
+    <string name="no_connection_detail">Please connect your device to the internet before continuing.</string>
     <string name="update_required_body">This device is running an outdated version of the application. Please update to the latest version before continuing.</string>
     <string name="update_required_title">Outdated App Version</string>
     <string name="user_agent_string">evaln_tablet_app</string>
