@@ -2,14 +2,10 @@ package ca.stevenlyall.evaln;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -45,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
 			finish();
 		}
 
-		if (!isNetworkConnected()) {
-			showNoConnectionMessage();
+		ConnectionManager cm = new ConnectionManager(MainActivity.this);
+		if (!cm.isNetworkConnected()) {
+			cm.showNoConnectionMessage();
 		} else {
 
 			// to ensure all tablets in a large group use most recent version, checks version code against one provided on server
@@ -71,26 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
 		}
 
-	}
-
-	private boolean isNetworkConnected() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-		return (info != null && info.isConnected());
-	}
-
-	private void showNoConnectionMessage() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// go to wifi settings
-				MainActivity.this.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-			}
-		});
-		builder.setTitle(R.string.no_connection).setMessage(R.string.no_connection_detail);
-
-		builder.create().show();
 	}
 
 	@SuppressLint("SetJavaScriptEnabled")

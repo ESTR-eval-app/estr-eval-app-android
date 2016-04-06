@@ -2,16 +2,10 @@ package ca.stevenlyall.evaln;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -31,8 +25,9 @@ public class AgreementActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 
-		if (!isNetworkConnected()) {
-			showNoConnectionMessage();
+		ConnectionManager cm = new ConnectionManager(AgreementActivity.this);
+		if (!cm.isNetworkConnected()) {
+			cm.showNoConnectionMessage();
 		} else {
 			showEulaInWebView();
 			setButtonListeners();
@@ -78,26 +73,7 @@ public class AgreementActivity extends Activity {
 
 	}
 
-	// TODO move these two methods to separate class, used in both agreement activity and main
-	private boolean isNetworkConnected() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-		return (info != null && info.isConnected());
-	}
 
-	private void showNoConnectionMessage() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(AgreementActivity.this);
-		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// go to wifi settings
-				AgreementActivity.this.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-			}
-		});
-		builder.setTitle(R.string.no_connection).setMessage(R.string.no_connection_detail);
-
-		builder.create().show();
-	}
 
 	@SuppressLint("SetJavaScriptEnabled")
 	private void showEulaInWebView() {
