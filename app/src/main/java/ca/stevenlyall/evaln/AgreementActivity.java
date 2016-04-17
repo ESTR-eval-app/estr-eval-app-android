@@ -35,7 +35,9 @@ public class AgreementActivity extends Activity {
 
 	}
 
-
+	/**
+	 * Event handlers for accept and decline buttons.
+	 */
 	private void setButtonListeners() {
 		Button declineButton = (Button) findViewById(R.id.declineEULAButton);
 		declineButton.setOnClickListener(new View.OnClickListener() {
@@ -64,17 +66,8 @@ public class AgreementActivity extends Activity {
 	}
 
 	/**
-	 * once license has been accepted
+	 * Shows the license agreement in the web view.
 	 */
-	private void proceedToMainActivity() {
-		Intent startMain = new Intent(getBaseContext(), MainActivity.class);
-		startActivity(startMain);
-		finish();
-
-	}
-
-
-
 	@SuppressLint("SetJavaScriptEnabled")
 	private void showEulaInWebView() {
 
@@ -90,5 +83,13 @@ public class AgreementActivity extends Activity {
 		webView.loadUrl(url);
 
 	}
+
+	private void proceedToMainActivity() {
+		Intent startMain = new Intent(getBaseContext(), MainActivity.class);
+		startActivity(startMain);
+		finish();
+
+	}
+
 
 }
